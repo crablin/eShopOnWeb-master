@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Интернет магазин стройматериалов</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css?v=@DateTime.Now.Millisecond" />
+        <link rel="stylesheet" href="~/css/app.css?v=@DateTime.Now.Millisecond" />
+        <link rel="stylesheet" href="~/css/app.component.css?v=@DateTime.Now.Millisecond" />
+        <link rel="stylesheet" href="~/css/shared/components/header/header.css?v=@DateTime.Now.Millisecond" />
+        <link rel="stylesheet" href="~/css/shared/components/identity/identity.css?v=@DateTime.Now.Millisecond" />
+        <link rel="stylesheet" href="~/css/shared/components/pager/pager.css?v=@DateTime.Now.Millisecond" />
+        <link rel="stylesheet" href="~/css/basket/basket.component.css?v=@DateTime.Now.Millisecond" />
+        <link rel="stylesheet" href="~/css/basket/basket-status/basket-status.component.css?v=@DateTime.Now.Millisecond" />
+        <link rel="stylesheet" href="~/css/catalog/catalog.component.css?v=@DateTime.Now.Millisecond" />
+        <link rel="stylesheet" href="~/css/orders/orders.component.css?v=@DateTime.Now.Millisecond" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.5/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems, {});
+            var elems = document.querySelectorAll('.dropdown-trigger');
+            var instances2 = M.Dropdown.init(elems, {});
+            var elems = document.querySelectorAll('.sidenav');
+            var instances3 = M.Sidenav.init(elems, {});
+        });
+    </script>
+</head>
+<body>
+<div class="esh-app-wrapper">
+    <header class="esh-app-header">
+        <div class="container fill-width">
+            <article class="row">
+                <section class="col-lg-12 col-md-6 col-xs-12 no-padd">
+                    <nav>
+                        <div class="nav-wrapper">
+                            <a href="#!" class="brand-logo">Магазин</a>
+
+                            <a href="#" data-target="mobile-nav" class="sidenav-trigger">
+                                <i class="material-icons">menu</i>
+                            </a>
+
+                            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                                <li>
+                                    <a asp-area="" asp-page="/Index">
+                                        <img class="menu_img" src="~/images/home.png" alt="Home" />Главная
+                                    </a>
+                                </li>
+                                @if (!User.IsInRole("admin"))
+                                {
+                                    <li>
+                                        <a asp-area="" asp-page="/About">
+                                            <img class="menu_img" src="~/images/group.png" alt="Group" />О нас
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-area="" asp-page="/News">
+                                            <img class="menu_img" src="~/images/smiley.png" alt="Smiley" />Акции
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-area="" asp-page="/Conditions">
+                                            <img class="menu_img" src="~/images/info.png" alt="Info" />Условия
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-area="" asp-page="/Delivery">
+                                            <img class="menu_img" src="~/images/image.png" alt="Address" />Доставка
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-area="" asp-page="/Payment">
+                                            <img class="menu_img" src="~/images/credit_card.png" alt="Credit" />Оплата
+                                        </a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a asp-controller="Users" asp-action="Index">
+                                            Пользователи
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Category" asp-action="GetItems">
+                                            Категории
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Product" asp-action="GetItems">
+                                            Товары
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Report" asp-action="IndexReport">
+                                            Отчеты
+                                        </a>
+                                    </li>
+                                }
+                                <partial name="_LoginPartial" />
+                            </ul>
+                        </div>
+                    </nav>
+                </section>
+
+                <ul class="sidenav" id="mobile-nav">
+                    <li>
+                        <a asp-area="" asp-page="/Index">
+                            <img class="menu_img" src="~/images/home.png" alt="Home" />Главная
+                        </a>
+                    </li>
+                    @if (!User.IsInRole("admin"))
+                    {
+                        <li>
+                            <a asp-area="" asp-page="/About">
+                                <img class="menu_img" src="~/images/group.png" alt="Group" />О нас
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-page="/News">
+                                <img class="menu_img" src="~/images/smiley.png" alt="Smiley" />Акции
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-page="/Conditions">
+                                <img class="menu_img" src="~/images/info.png" alt="Info" />Условия
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-page="/Delivery">
+                                <img class="menu_img" src="~/images/image.png" alt="Address" />Доставка
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-page="/Payment">
+                                <img class="menu_img" src="~/images/credit_card.png" alt="Credit" />Оплата
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a asp-controller="Users" asp-action="Index">
+                                Пользователи
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="Category" asp-action="GetItems">
+                                Категории
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="Product" asp-action="GetItems">
+                                Товары
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="Report" asp-action="IndexReport">
+                                Отчеты
+                            </a>
+                        </li>
+                    }
+                    <partial name="_LoginPartial" />
+                </ul>
+            </article>
+        </div>
+    </header>
+        @RenderBody()
+        <footer class="esh-app-footer footer">
+            <div class="container">
+                <article class="row">
+                    <section class="col-sm-6"></section>
+                    <section class="col-sm-6">
+                        <div class="esh-app-footer-text hidden-xs"> 2020 - Интернет магазин строительных материалов </div>
+                    </section>
+                </article>
+            </div>
+        </footer>
+    </div>
+    <environment names="Development">
+        <script src="~/lib/jquery/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+    @RenderSection("scripts", required: false)
+</body>
+</html>

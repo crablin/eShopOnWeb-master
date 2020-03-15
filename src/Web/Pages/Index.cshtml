@@ -1,0 +1,47 @@
+﻿@page
+@{
+    ViewData["Title"] = "Каталог";
+    @model IndexModel
+}
+
+<section class="esh-catalog-filters">
+    <div class="container">
+        <form method="get">
+            <div class="main-select-wrap">
+                <div class="select-wrap">
+                    <select asp-for="@Model.CatalogModel.BrandFilterApplied" asp-items="@Model.CatalogModel.Brands"></select>
+                </div>
+                <div class="select-wrap">
+                    <select asp-for="@Model.CatalogModel.TypesFilterApplied" asp-items="@Model.CatalogModel.Types"></select>
+                </div>
+                <input class="esh-catalog-send" type="image" src="images/arrow-right.svg" />
+            </div>
+        </form>
+    </div>
+</section>
+<div class="container">
+    @if (Model.CatalogModel.CatalogItems.Any())
+    {
+
+        <div class="esh-catalog-items row">
+            @foreach (var catalogItem in Model.CatalogModel.CatalogItems)
+            {
+            <div class="esh-catalog-item col-md-4">
+                <partial name="_product" for="@catalogItem" />
+                @if (catalogItem.UnitsInStock < 0)
+                {
+                    <p><font size="3" color="red">Нет в наличии!</font></p>
+                }
+
+            </div>
+            }
+        </div>
+        <partial name="_pagination" for="CatalogModel.PaginationInfo" />
+    }
+    else
+    {
+        <div class="esh-catalog-items row">
+            Нет результатов соответствующих поиску
+        </div>
+    }
+</div>

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CategoryViewModel>
+@{
+    ViewData["Title"] = "Категория " + @Model.FirstOrDefault().Type;
+}
+
+<div class="esh-orders">
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+        <a class="esh-orders-link" asp-controller="Category" asp-action="CreateType" asp-route-categoryId="@Model.FirstOrDefault().Id">Создать подкатегорию</a>
+        
+        @if (Model != null && Model.Any())
+        {
+            <table class="responsive-table striped" style="margin-top: 50px">
+                <thead>
+                    <tr>
+                        <th>Номер</th>
+                        <th>Наименование</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model.FirstOrDefault().CategoryItems)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Type</td>
+                            <td>
+                                <form asp-action="DeleteType" asp-route-categoryId="@Model.FirstOrDefault().Id" asp-route-id="@item.Id" method="post">
+                                    <a class="btn btn-sm btn-primary" asp-action="ChangeTypeName" asp-route-categoryId="@Model.FirstOrDefault().Id" asp-route-id="@item.Id">Изменить</a>
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        Удалить
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
+
+@*@foreach (var item in Model.FirstOrDefault().CategoryItems)
+{
+    <article class="esh-orders-items row">
+        <section class="esh-orders-item col-xs-2">@Html.DisplayFor(modelItem => item.Id)</section>
+        <section class="esh-orders-item col-xs-4">@Html.DisplayFor(modelItem => item.Type)</section>
+        <section class="esh-orders-item col-xs-2">
+            <form asp-action="DeleteType" asp-route-categoryId="@Model.FirstOrDefault().Id" asp-route-id="@item.Id" method="post">
+                <a class="btn btn-sm btn-primary" asp-action="ChangeTypeName" asp-route-categoryId="@Model.FirstOrDefault().Id" asp-route-id="@item.Id">Изменить</a>
+                <button type="submit" class="btn btn-sm btn-danger">
+                    Удалить
+                </button>
+            </form>
+        </section>
+    </article>
+}*@

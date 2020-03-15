@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" TextQuality="Regular" ReportInfo.Description="Demonstrates master-detail report. To create it:&#13;&#10;- go to &quot;Report|Configure Bands...&quot; menu;&#13;&#10;- select the existing data band;&#13;&#10;- press the &quot;Add&quot; button and select the &quot;Data&quot; band - this will add a data band to existing one;&#13;&#10;- return to the report page, doubleclick each data band and set its datasource.&#13;&#10;Note: if you have defined the relation between master and detail tables, FastReport will use it automatically." ReportInfo.Created="01/17/2008 03:55:42" ReportInfo.Modified="01/27/2020 21:46:11" ReportInfo.CreatorVersion="2020.1.5.0">
+  <Styles>
+    <Style Name="EvenRows" Font="Arial, 10pt"/>
+  </Styles>
+  <Dictionary>
+    <OdbcDataConnection Name="Data" ConnectionString="rijcmlqe31DgxHitvEbluAjng1RXeRG940GBJRmmzGpjD2/4NDHgCj5ruf67lbM+nT32bqd">
+      <TableDataSource Name="dbo_Catalog" DataType="System.Int32" Enabled="true" TableName="dbo.&quot;Catalog&quot;">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="CatalogBrandId" DataType="System.Int32"/>
+        <Column Name="CatalogTypeId" DataType="System.Int32"/>
+        <Column Name="Description" DataType="System.String"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="PictureUri" DataType="System.String"/>
+        <Column Name="Price" DataType="System.Decimal"/>
+        <Column Name="CatalogCategoryId" DataType="System.Int32"/>
+        <Column Name="UnitsInStock" DataType="System.Int32"/>
+      </TableDataSource>
+      <TableDataSource Name="dbo_CatalogBrand" DataType="System.Int32" Enabled="true" TableName="dbo.&quot;CatalogBrand&quot;">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="Brand" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="dbo_CatalogCategory" DataType="System.Int32" Enabled="true" TableName="dbo.&quot;CatalogCategory&quot;">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="Category" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="dbo_CatalogType" DataType="System.Int32" Enabled="true" TableName="dbo.&quot;CatalogType&quot;">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="Type" DataType="System.String"/>
+        <Column Name="CatalogCategoryId" DataType="System.Int32"/>
+      </TableDataSource>
+      <TableDataSource Name="dbo_OrderItems" DataType="System.Int32" Enabled="true" TableName="dbo.&quot;OrderItems&quot;">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="OrderId" DataType="System.Int32"/>
+        <Column Name="UnitPrice" DataType="System.Decimal"/>
+        <Column Name="Units" DataType="System.Int32"/>
+        <Column Name="ItemOrdered_CatalogItemId" DataType="System.Int32"/>
+        <Column Name="ItemOrdered_PictureUri" DataType="System.String"/>
+        <Column Name="ItemOrdered_ProductName" DataType="System.String"/>
+      </TableDataSource>
+    </OdbcDataConnection>
+    <Relation Name="CategoriesProducts" ReferenceName="NorthWind.CategoriesProducts" ParentDataSource="null" ChildDataSource="null" ParentColumns="CategoryID" ChildColumns="CategoryID" Enabled="true"/>
+    <Relation Name="dbo_CatalogCategory_Table" ParentDataSource="null" ChildDataSource="null" ParentColumns="Id" ChildColumns="CatalogCategoryId" Enabled="true"/>
+    <Relation Name="dbo_OrderItems_dbo_Catalog" ParentDataSource="null" ChildDataSource="null" ParentColumns="ItemOrdered_CatalogItemId" ChildColumns="Id" Enabled="true"/>
+    <Relation Name="dbo_OrderItems_dbo_Catalog1" ParentDataSource="null" ChildDataSource="null" ParentColumns="ItemOrdered_CatalogItemId" ChildColumns="Id" Enabled="true"/>
+    <Relation Name="dbo_CatalogCategory_dbo_Catalog" ParentDataSource="null" ChildDataSource="null" ParentColumns="Id" ChildColumns="CatalogCategoryId" Enabled="true"/>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="75.6" CanGrow="true">
+      <TextObject Name="Text3" Top="37.8" Width="718.2" Height="37.8" Text="Отчет об остатках и продажах товаров" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 14pt, style=Bold"/>
+      <TextObject Name="Text11" Width="718.2" Height="28.35" Anchor="Top, Left, Right" Fill.Color="WhiteSmoke" CanGrow="true" CanShrink="true" Padding="4, 4, 4, 4" Font="Tahoma, 8pt"/>
+    </ReportTitleBand>
+    <DataBand Name="Data1" Top="79.6" Width="718.2" Height="56.7" Fill="Glass" Fill.Color="64, 64, 64" Fill.Blend="0.08" Fill.Hatch="true" KeepDetail="true">
+      <TextObject Name="Text1" Left="9.45" Top="9.45" Width="378" Height="28.35" Text="[dbo_CatalogCategory.Category]" Font="Tahoma, 18pt" TextFill.Color="White"/>
+      <DataBand Name="Data2" Top="172.65" Width="718.2" Height="18.9" Fill.Color="WhiteSmoke" EvenStyle="EvenRows">
+        <TextObject Name="Text5" Width="292.95" Height="18.9" Text="[dbo_Catalog.Name]" VertAlign="Center" Font="Tahoma, 8pt"/>
+        <TextObject Name="Text7" Left="321.3" Width="122.85" Height="18.9" Text="[dbo_Catalog.Price]" Format="Currency" Format.UseLocale="true" Format.DecimalDigits="2" HorzAlign="Right" VertAlign="Center" Font="Tahoma, 8pt"/>
+        <TextObject Name="Text9" Left="472.5" Width="122.85" Height="18.9" Text="[dbo_Catalog.UnitsInStock]" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt"/>
+        <TextObject Name="Text14" Left="623.7" Width="94.5" Height="18.9" Text="[dbo_Catalog.UnitsInStock]" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt"/>
+        <DataHeaderBand Name="DataHeader1" Top="140.3" Width="718.2" Height="28.35">
+          <TextObject Name="Text6" Width="292.95" Height="28.35" Text="Наименование товара" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+          <TextObject Name="Text8" Left="321.3" Width="122.85" Height="28.35" Text="Цена" HorzAlign="Right" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+          <TextObject Name="Text10" Left="472.5" Width="122.85" Height="28.35" Text="На складе" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+          <TextObject Name="Text12" Left="623.7" Width="94.5" Height="28.35" Text="Продано" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 8pt, style=Bold"/>
+        </DataHeaderBand>
+        <DataFooterBand Name="DataFooter1" Top="195.55" Width="718.2" Height="16"/>
+      </DataBand>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="215.55" Width="718.2" Height="28.35" Fill.Color="WhiteSmoke">
+      <TextObject Name="Text4" Left="614.25" Width="94.5" Height="28.35" Text="[PageN]" HorzAlign="Right" VertAlign="Center" Font="Tahoma, 8pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

@@ -1,0 +1,65 @@
+﻿
+@if (Context.User.Identity.IsAuthenticated)
+{
+    <li style="margin-left: 30px">
+        <form asp-area="Identity" asp-page="/Account/Logout" method="post" id="logoutForm" class="navbar-right">
+
+            @*<a class='dropdown-trigger btn' href='#' data-target='dropdown1'>@Context.User.Identity.Name</a>
+
+         Dropdown Structure
+        <ul id='dropdown1' class='dropdown-content'>
+            <li>
+                <a class="esh-identity-item" asp-controller="Order" asp-action="MyOrders">
+                    <div class="esh-identity-name esh-identity-name--upper">Мои заказы</div>
+                </a>
+            </li>
+            <li>
+                <a class="esh-identity-item" asp-controller="Manage" asp-action="MyAccount">
+                    <div class="esh-identity-name esh-identity-name--upper">Мой профиль</div>
+                </a>
+            </li>
+            <li class="divider" tabindex="-1"></li>
+            <li>
+                <a class="esh-identity-item" href="javascript:document.getElementById('logoutForm').submit()">
+                    <div class="esh-identity-name esh-identity-name--upper">Выйти</div>
+                    <img class="esh-identity-image" src="~/images/logout.png">
+                </a>
+            </li>
+        </ul>*@
+            <div class="dropdown">
+                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@Context.User.Identity.Name<span class="caret"></span></button>
+                <ul class="dropdown-menu" aria-labelledby="dLabel">
+                    <li>
+                        <a class="esh-identity-item" asp-controller="Order" asp-action="MyOrders">
+                            <div class="esh-identity-name esh-identity-name--upper">Мои заказы</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="esh-identity-item" asp-controller="Manage" asp-action="MyAccount">
+                            <div class="esh-identity-name esh-identity-name--upper">Мой профиль</div>
+                        </a>
+                    </li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li>
+                        <a class="esh-identity-item" href="javascript:document.getElementById('logoutForm').submit()">
+                            <div class="esh-identity-name esh-identity-name--upper">Выйти</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </form>
+    </li>
+    <li style="margin-left: 30px">
+        @await Component.InvokeAsync("Basket", User.Identity.Name)
+    </li>
+}
+else
+{
+    <li style="margin-left: 30px">
+        <a asp-area="Identity" asp-page="/Account/Login" class="esh-identity-name esh-identity-name--upper">Войти</a>
+    </li>
+    <li style="margin-left: 30px">
+        @await Component.InvokeAsync("Basket")
+    </li>
+}
+

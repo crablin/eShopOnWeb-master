@@ -1,0 +1,214 @@
+@font-face {
+    font-family: Montserrat;
+    font-weight: 400;
+    src: url(".../fonts/Montserrat-Regular.eot?") format("eot"), url("../fonts/Montserrat-Regular.woff") format("woff"), url("../fonts/Montserrat-Regular.ttf") format("truetype"), url("../fonts/Montserrat-Regular.svg#Montserrat") format("svg");
+}
+
+@font-face {
+    font-family: Montserrat;
+    font-weight: 700;
+    src: url("../fonts/Montserrat-Bold.eot?") format("eot"), url("../fonts/Montserrat-Bold.woff") format("woff"), url("../fonts/Montserrat-Bold.ttf") format("truetype"), url("../fonts/Montserrat-Bold.svg#Montserrat") format("svg");
+}
+
+html,
+body {
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    z-index: 10;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+.preloading {
+    color: #00A69C;
+    display: block;
+    font-size: 1.5rem;
+    left: 50%;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+@media screen and (min-width: 992px) {
+    .form-input {
+        max-width: 360px;
+        width: 360px;
+    }
+}
+
+.form-input {
+    border-radius: 0;
+    height: 45px;
+    padding: 10px;
+}
+
+.form-input-small {
+    max-width: 100px !important;
+}
+
+.form-input-medium {
+    width: 150px !important;
+}
+
+.alert {
+    padding-left: 0;
+}
+
+.alert-danger {
+    background-color: transparent;
+    border: 0;
+    color: #FB0D0D;
+    font-size: 12px;
+}
+
+a,
+a:active,
+a:hover,
+a:visited {
+    color: #000;
+    text-decoration: none;
+    transition: color 0.35s;
+}
+
+    a:hover,
+    a:active {
+        color: #75B918;
+        transition: color 0.35s;
+    }
+
+
+nav ul li a:hover, nav ul li.active {
+    background-color: #ea454b !important;
+}
+
+.menu_img {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+}
+
+a:hover, a:active {
+    color: #ffffff;
+    transition: color 0.35s;
+}
+
+.select-wrapper input.select-dropdown {
+    border-bottom: 1px solid #ffffff;
+}
+
+.select-wrap {
+    width: 300px;
+    margin-right: 50px;
+}
+.main-select-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.select-wrapper input.select-dropdown:focus {
+    border-bottom: 1px solid #fff;
+}
+.send-get {
+    cursor:pointer;
+}
+.esh-identity-item:hover {
+    color: white !important;
+    font-weight: 600;
+    transition: color 0.35s;
+}
+img.esh-identity-image {
+    width: 30px;
+}
+.esh-basketstatus:hover .esh-basketstatus-badge {
+    background-color: #75b918;
+    color: white;
+    transition: all 0.35s;
+}
+
+.esh-basketstatus-image {
+    height: 100% !important;
+    margin-top: 0px !important;
+}
+
+.esh-basketstatus-badge {
+    background-color: #83D01B;
+    border-radius: 50%;
+    color: #FFFFFF;
+    display: flex;
+    height: 25px;
+    align-items: center;
+    justify-content: center;
+    left: 20%;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    transform: translateX(-38%);
+    transition: all 0.35s;
+    width: 25px;
+}
+.esh-basketstatus {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+#dLabel {
+    background-color: transparent;
+    border: none;
+}
+.esh-basket-checkout {
+    background-color: #83D01B;
+    border: 0;
+    border-radius: 0;
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 1rem;
+    padding: 10px !important;
+    text-align: center;
+    text-transform: uppercase;
+    transition: all 0.35s;
+}
+.esh-basketstatus-badge {
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    article.esh-basket-titles.row {
+        font-size: 10px;
+    }
+    .esh-basket-image {
+        height: 4rem !important;
+    }
+    .esh-basket-title.col-xs-3.hidden-lg-down {
+        display: none;
+    }
+    .last-small-bb {
+        margin-left: 30px;
+    }
+}
+
+.fill-width {
+    width: 100% !important;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+}
+.no-padd {
+    padding: 0;
+}
+.esh-basketstatus-badge {
+    display: flex;
+}

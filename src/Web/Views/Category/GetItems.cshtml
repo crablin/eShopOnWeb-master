@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CategoryViewModel>
+@{
+    ViewData["Title"] = "Категории";
+}
+
+<div class="esh-orders">
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+
+        <a class="esh-orders-link" asp-controller="Category" asp-action="Create">Добавить категорию</a>
+        @if (Model != null && Model.Any())
+        {
+           
+
+            <table class="responsive-table striped" style="margin-top: 50px">
+                <thead>
+                    <tr>
+                        <th>Номер</th>
+                        <th>Наименование</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Type</td>
+                            <td><a class="esh-orders-link" asp-controller="Category" asp-action="GetById" asp-route-categoryId="@item.Id">Подкатегории</a></td>
+                            <td>
+                                <form asp-action="Delete" asp-route-categoryId="@item.Id" method="post">
+                                    <a class="btn btn-sm btn-primary" asp-action="ChangeName" asp-route-id="@item.Id">Изменить</a>
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        Удалить
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            
+        }
+    </div>
+</div>

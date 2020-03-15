@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataSet>
+  <xs:schema id="Catalog" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="Catalog" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Catalog">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Name" type="xs:string" minOccurs="0" />
+                <xs:element name="CatalogCategoryId" type="xs:int" minOccurs="0" />
+                <xs:element name="Price" type="xs:decimal" minOccurs="0" />
+                <xs:element name="UnitsInStock" type="xs:int" minOccurs="0" />
+                <xs:element name="Units" type="xs:int" minOccurs="0" />
+                <xs:element name="ItemOrdered_CatalogItemId" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="CatalogCategory">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Id" type="xs:int" minOccurs="0" />
+                <xs:element name="Category" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1">
+        <xs:selector xpath=".//CatalogCategory" />
+        <xs:field xpath="Id" />
+      </xs:unique>
+      <xs:keyref name="CatalogCatalogCategories" refer="Constraint1">
+        <xs:selector xpath=".//Catalog" />
+        <xs:field xpath="CatalogCategoryId" />
+      </xs:keyref>
+    </xs:element>
+  </xs:schema>
+  <diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1">
+    <Catalog>
+      <Catalog diffgr:id="Catalog1" msdata:rowOrder="0">
+        <Name>DONNA VANNA Ванна стальная</Name>
+        <CatalogCategoryId>2</CatalogCategoryId>
+        <Price>178.09</Price>
+        <UnitsInStock>9</UnitsInStock>
+        <Units>1</Units>
+        <ItemOrdered_CatalogItemId>2</ItemOrdered_CatalogItemId>
+      </Catalog>
+      <Catalog diffgr:id="Catalog2" msdata:rowOrder="1">
+        <Name>Дрель-шуруповерт BOSCH GSR 180-Li</Name>
+        <CatalogCategoryId>4</CatalogCategoryId>
+        <Price>261.73</Price>
+        <UnitsInStock>15</UnitsInStock>
+      </Catalog>
+      <Catalog diffgr:id="Catalog3" msdata:rowOrder="2">
+        <Name>Краска Dulux 3D White</Name>
+        <CatalogCategoryId>5</CatalogCategoryId>
+        <Price>87.34</Price>
+        <UnitsInStock>9</UnitsInStock>
+      </Catalog>
+      <Catalog diffgr:id="Catalog4" msdata:rowOrder="3">
+        <Name>Краска Фаворит МА-15 синяя 25кг</Name>
+        <CatalogCategoryId>5</CatalogCategoryId>
+        <Price>64.00</Price>
+        <UnitsInStock>15</UnitsInStock>
+      </Catalog>
+      <Catalog diffgr:id="Catalog5" msdata:rowOrder="4">
+        <Name>Линолеум бытовой усиленный Diva</Name>
+        <CatalogCategoryId>3</CatalogCategoryId>
+        <Price>14.44</Price>
+        <UnitsInStock>10</UnitsInStock>
+      </Catalog>
+      <Catalog diffgr:id="Catalog6" msdata:rowOrder="5">
+        <Name>Лобзик электрический ELITECH</Name>
+        <CatalogCategoryId>4</CatalogCategoryId>
+        <Price>141.89</Price>
+        <UnitsInStock>10</UnitsInStock>
+      </Catalog>
+      <Catalog diffgr:id="Catalog7" msdata:rowOrder="6">
+        <Name>Плитка ПВХ Tarkett</Name>
+        <CatalogCategoryId>3</CatalogCategoryId>
+        <Price>34.55</Price>
+        <UnitsInStock>5</UnitsInStock>
+      </Catalog>
+      <Catalog diffgr:id="Catalog8" msdata:rowOrder="7">
+        <Name>Прожектор галогенный</Name>
+        <CatalogCategoryId>6</CatalogCategoryId>
+        <Price>10.00</Price>
+        <UnitsInStock>10</UnitsInStock>
+      </Catalog>
+      <Catalog diffgr:id="Catalog9" msdata:rowOrder="8">
+        <Name>Раковина Santek Бриз 55 см</Name>
+        <CatalogCategoryId>2</CatalogCategoryId>
+        <Price>34.91</Price>
+        <UnitsInStock>10</UnitsInStock>
+      </Catalog>
+      <Catalog diffgr:id="Catalog10" msdata:rowOrder="9">
+        <Name>Смеситель для ванны Grohe</Name>
+        <CatalogCategoryId>2</CatalogCategoryId>
+        <Price>190.05</Price>
+        <UnitsInStock>10</UnitsInStock>
+      </Catalog>
+      <Catalog diffgr:id="Catalog11" msdata:rowOrder="10">
+        <Name>Трава искусственная Dundee</Name>
+        <CatalogCategoryId>3</CatalogCategoryId>
+        <Price>32.99</Price>
+        <UnitsInStock>10</UnitsInStock>
+      </Catalog>
+      <Catalog diffgr:id="Catalog12" msdata:rowOrder="11">
+        <Name>Штукатурка цементная фасадная Кнауф</Name>
+        <CatalogCategoryId>1</CatalogCategoryId>
+        <Price>8.34</Price>
+        <UnitsInStock>4</UnitsInStock>
+        <Units>6</Units>
+        <ItemOrdered_CatalogItemId>3</ItemOrdered_CatalogItemId>
+      </Catalog>
+      <CatalogCategory diffgr:id="CatalogCategory1" msdata:rowOrder="0">
+        <Id>1</Id>
+        <Category>Стройматериалы</Category>
+      </CatalogCategory>
+      <CatalogCategory diffgr:id="CatalogCategory2" msdata:rowOrder="1">
+        <Id>2</Id>
+        <Category>Сантехника</Category>
+      </CatalogCategory>
+      <CatalogCategory diffgr:id="CatalogCategory3" msdata:rowOrder="2">
+        <Id>3</Id>
+        <Category>Плитка и напольные покрытия</Category>
+      </CatalogCategory>
+      <CatalogCategory diffgr:id="CatalogCategory4" msdata:rowOrder="3">
+        <Id>4</Id>
+        <Category>Инструменты</Category>
+      </CatalogCategory>
+      <CatalogCategory diffgr:id="CatalogCategory5" msdata:rowOrder="4">
+        <Id>5</Id>
+        <Category>Краски</Category>
+      </CatalogCategory>
+      <CatalogCategory diffgr:id="CatalogCategory6" msdata:rowOrder="5">
+        <Id>6</Id>
+        <Category>Электрика и освещение</Category>
+      </CatalogCategory>
+      <CatalogCategory diffgr:id="CatalogCategory7" msdata:rowOrder="6">
+        <Id>7</Id>
+        <Category>Ntcn</Category>
+      </CatalogCategory>
+      <CatalogCategory diffgr:id="CatalogCategory8" msdata:rowOrder="7">
+        <Id>8</Id>
+        <Category>gfdfr</Category>
+      </CatalogCategory>
+    </Catalog>
+  </diffgr:diffgram>
+</DataSet>

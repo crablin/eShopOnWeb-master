@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ProductViewModel>
+@{
+    ViewData["Title"] = "Товары";
+}
+
+<div class="esh-orders">
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+        <a class="esh-orders-link" asp-controller="Product" asp-action="Create">Добавить товар</a>
+
+        @if (Model != null && Model.Any())
+        {
+            <table class="responsive-table striped" style="margin-top: 50px">
+                <thead>
+                    <tr>
+                        <th>Категория</th>
+                        <th>Наименование</th>
+                        <th>Цена</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Category.Type</td>
+                            <td>@item.Name</td>
+                            <td>@item.Price</td>
+                            <td>
+                                <form asp-action="Delete" asp-route-productId="@item.Id" method="post">
+                                    <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-productId="@item.Id"
+                                       asp-route-categoryTypeId="@item.CategoryTypeId" asp-route-categoryId="@item.CategoryId">
+                                        Изменить
+                                    </a>
+                                    <button type="submit" class="btn btn-sm btn-danger">Удалить</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+       }
+    </div>
+</div>

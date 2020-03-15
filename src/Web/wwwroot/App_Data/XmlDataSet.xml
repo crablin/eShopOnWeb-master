@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataSet>
+  <xs:schema id="Orders" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="Orders" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Order">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Id" type="xs:int" minOccurs="0" />
+                <xs:element name="BuyerId" type="xs:string" minOccurs="0" />
+                <xs:element name="OrderDate" msdata:DataType="System.DateTimeOffset" type="xs:anyType" minOccurs="0" />
+                <xs:element name="ShipToAddress_City" type="xs:string" minOccurs="0" />
+                <xs:element name="ShipToAddress_Country" type="xs:string" minOccurs="0" />
+                <xs:element name="ShipToAddress_State" type="xs:string" minOccurs="0" />
+                <xs:element name="ShipToAddress_Street" type="xs:string" minOccurs="0" />
+                <xs:element name="ShipToAddress_ZipCode" type="xs:string" minOccurs="0" />
+                <xs:element name="DateOrder" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="Email" type="xs:string" minOccurs="0" />
+                <xs:element name="FirstName" type="xs:string" minOccurs="0" />
+                <xs:element name="SecondName" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="OrderItems">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Id" type="xs:int" minOccurs="0" />
+                <xs:element name="OrderId" type="xs:int" minOccurs="0" />
+                <xs:element name="UnitPrice" type="xs:decimal" minOccurs="0" />
+                <xs:element name="Units" type="xs:int" minOccurs="0" />
+                <xs:element name="ItemOrdered_CatalogItemId" type="xs:int" minOccurs="0" />
+                <xs:element name="ItemOrdered_PictureUri" type="xs:string" minOccurs="0" />
+                <xs:element name="ItemOrdered_ProductName" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1">
+        <xs:selector xpath=".//Order" />
+        <xs:field xpath="Id" />
+      </xs:unique>
+      <xs:keyref name="Order_Items" refer="Constraint1">
+        <xs:selector xpath=".//OrderItems" />
+        <xs:field xpath="OrderId" />
+      </xs:keyref>
+    </xs:element>
+  </xs:schema>
+  <diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1">
+    <Orders>
+      <Order diffgr:id="Order1" msdata:rowOrder="0">
+        <Id>1005</Id>
+        <BuyerId>admin</BuyerId>
+        <OrderDate>2020-02-17T09:09:08.7553729+02:00</OrderDate>
+        <ShipToAddress_City>Минск</ShipToAddress_City>
+        <ShipToAddress_Country>Республика Беларусь</ShipToAddress_Country>
+        <ShipToAddress_State>23</ShipToAddress_State>
+        <ShipToAddress_Street>ул. Карла Маркса</ShipToAddress_Street>
+        <ShipToAddress_ZipCode>10</ShipToAddress_ZipCode>
+        <DateOrder>2020-02-17T09:09:08.757+02:00</DateOrder>
+        <Email>admin@gmail.com2</Email>
+        <FirstName>Михаил</FirstName>
+        <SecondName>Петров</SecondName>
+      </Order>
+      <Order diffgr:id="Order2" msdata:rowOrder="1">
+        <Id>1006</Id>
+        <BuyerId>admin</BuyerId>
+        <OrderDate>2020-02-17T09:09:44.2001359+02:00</OrderDate>
+        <ShipToAddress_City>Минск</ShipToAddress_City>
+        <ShipToAddress_Country>Республика Беларусь</ShipToAddress_Country>
+        <ShipToAddress_State>23</ShipToAddress_State>
+        <ShipToAddress_Street>ул. Карла Маркса</ShipToAddress_Street>
+        <ShipToAddress_ZipCode>10</ShipToAddress_ZipCode>
+        <DateOrder>2020-02-17T09:09:44.2+02:00</DateOrder>
+        <Email>admin@gmail.com2</Email>
+        <FirstName>Михаил</FirstName>
+        <SecondName>Петров</SecondName>
+      </Order>
+      <Order diffgr:id="Order3" msdata:rowOrder="2">
+        <Id>1007</Id>
+        <BuyerId>admin</BuyerId>
+        <OrderDate>2020-02-17T15:54:21.50439+02:00</OrderDate>
+        <ShipToAddress_City>Минск</ShipToAddress_City>
+        <ShipToAddress_Country>Республика Беларусь</ShipToAddress_Country>
+        <ShipToAddress_State>23</ShipToAddress_State>
+        <ShipToAddress_Street>ул. Карла Маркса</ShipToAddress_Street>
+        <ShipToAddress_ZipCode>10</ShipToAddress_ZipCode>
+        <DateOrder>2020-02-17T15:54:21.503+02:00</DateOrder>
+        <Email>admin@gmail.com2</Email>
+        <FirstName>Михаил</FirstName>
+        <SecondName>Петров</SecondName>
+      </Order>
+      <OrderItems diffgr:id="OrderItems1" msdata:rowOrder="0">
+        <Id>1005</Id>
+        <OrderId>1005</OrderId>
+        <UnitPrice>8.34</UnitPrice>
+        <Units>5</Units>
+        <ItemOrdered_CatalogItemId>3</ItemOrdered_CatalogItemId>
+        <ItemOrdered_PictureUri>/images/products/3.png</ItemOrdered_PictureUri>
+        <ItemOrdered_ProductName>Штукатурка цементная фасадная Кнауф</ItemOrdered_ProductName>
+      </OrderItems>
+      <OrderItems diffgr:id="OrderItems2" msdata:rowOrder="1">
+        <Id>1006</Id>
+        <OrderId>1006</OrderId>
+        <UnitPrice>8.34</UnitPrice>
+        <Units>1</Units>
+        <ItemOrdered_CatalogItemId>3</ItemOrdered_CatalogItemId>
+        <ItemOrdered_PictureUri>/images/products/3.png</ItemOrdered_PictureUri>
+        <ItemOrdered_ProductName>Штукатурка цементная фасадная Кнауф</ItemOrdered_ProductName>
+      </OrderItems>
+      <OrderItems diffgr:id="OrderItems3" msdata:rowOrder="2">
+        <Id>1007</Id>
+        <OrderId>1007</OrderId>
+        <UnitPrice>178.09</UnitPrice>
+        <Units>1</Units>
+        <ItemOrdered_CatalogItemId>2</ItemOrdered_CatalogItemId>
+        <ItemOrdered_PictureUri>/images/products/2.png</ItemOrdered_PictureUri>
+        <ItemOrdered_ProductName>DONNA VANNA Ванна стальная</ItemOrdered_ProductName>
+      </OrderItems>
+    </Orders>
+  </diffgr:diffgram>
+</DataSet>

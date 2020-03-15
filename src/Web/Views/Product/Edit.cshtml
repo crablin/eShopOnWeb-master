@@ -1,0 +1,43 @@
+﻿@model Web.ViewModels.ProductViewModel
+@{
+    ViewBag.Title = "Редактирование товара";
+}
+<div class="esh-app-wrapper">
+    <div class="container">
+        <form asp-action="Edit" asp-controller="Product" asp-route-lastPrice="@ViewBag.Price">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Id" />
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="CategoryId" />
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="CategoryTypeId" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Наименование</label>
+                <input type="text" asp-for="Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label">Новая цена</label>
+                <input type="number" step="0.01" min="1" asp-for="Price" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="UnitsInStock" class="control-label">Количество на складе</label>
+                <input type="number" step="1" min="1" asp-for="UnitsInStock" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="PictureUri" class="control-label">Изображение (полный путь)</label>
+                <input type="text" asp-for="PictureUri" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Описание</label>
+                <input type="text" asp-for="Description" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>

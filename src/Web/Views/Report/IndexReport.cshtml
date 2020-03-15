@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Отчетность";
+}
+<div class="esh-orders">
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+
+        <h3>Отчёт об остатках и продажах товаров</h3>
+        <a href="/report/get/1?format=pdf">Скачать отчёт в формате PDF</a><br />
+        <a href="/report/get/1?format=pdf&inline=true">Просмотр отчёта в формате PDF</a><br />
+        <a href="/report/get/1?format=html&inline=true&parameter=REPORT">Просмотр отчёта в формате HTML</a><br />
+
+        <h3>Отчёт о заказанных товарах</h3>
+        <a href="/report/get/2?format=pdf">Скачать отчёт в формате PDF</a><br />
+        <a href="/report/get/2?format=pdf&inline=true">Просмотр отчёта в формате PDF</a><br />
+        <a href="/report/get/2?format=html&inline=true&parameter=REPORT">Просмотр отчёта в формате HTML</a><br />
+    </div>
+</div>

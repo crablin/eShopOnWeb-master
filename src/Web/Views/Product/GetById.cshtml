@@ -1,0 +1,42 @@
+﻿@model ProductViewModel
+@{
+    ViewData["Title"] = "Товар " + @Model.Name;
+}
+
+<div class="esh-orders">
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+
+        <form asp-page="/Basket/Index" method="post">
+            @if (User.Identity.IsAuthenticated && @Model.UnitsInStock > 0)
+            {
+                <input class="esh-catalog-button" type="submit" value="Добавить в корзину" />
+            }
+            <input type="hidden" asp-for="@Model.Id" name="id" />
+            <input type="hidden" asp-for="@Model.Name" name="name" />
+            <input type="hidden" asp-for="@Model.PictureUri" name="pictureUri" />
+            <input type="hidden" asp-for="@Model.Price" name="price" />
+        </form>
+
+            @if (Model != null)
+            {
+                <table class="responsive-table striped" style="margin-top: 50px">
+                    <thead>
+                        <tr>
+                            <th>Номер</th>
+                            <th>Наименование</th>
+                            <th>Ценa</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                            <tr>
+                                <td>@Model.Id</td>
+                                <td>@Model.Name</td>
+                                <td>@Model.Price</td>
+                            </tr>
+                    </tbody>
+                </table>
+            }
+    </div>
+</div>
